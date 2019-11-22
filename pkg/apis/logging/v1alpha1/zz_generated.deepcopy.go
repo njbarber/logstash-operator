@@ -20,10 +20,8 @@ func (in *Application) DeepCopyInto(out *Application) {
 	}
 	if in.Matchers != nil {
 		in, out := &in.Matchers, &out.Matchers
-		*out = make(map[string]string, len(*in))
-		for key, val := range *in {
-			(*out)[key] = val
-		}
+		*out = make([]string, len(*in))
+		copy(*out, *in)
 	}
 	return
 }

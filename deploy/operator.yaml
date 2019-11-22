@@ -15,16 +15,13 @@ spec:
       serviceAccountName: logstash-operator
       containers:
         - name: logstash-operator
-          # Replace this with the built image name
-          image: REPLACE_IMAGE
+          image: quay.io/njbarber/logstash-operator:v0.0.1
           command:
           - logstash-operator
           imagePullPolicy: Always
           env:
             - name: WATCH_NAMESPACE
-              valueFrom:
-                fieldRef:
-                  fieldPath: metadata.namespace
+              value: ""
             - name: POD_NAME
               valueFrom:
                 fieldRef:

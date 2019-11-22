@@ -4,24 +4,17 @@ metadata:
   name: example-logstash
 spec:
   applications:
-  - name: app-1
+  - name: logging-sample-1
     patterns:
-      WARN: warn
-      TEST: test
-    matchers:
-      # MATCHER: "match => { 'message' => '%{WARN:warn} %{GREEDYDATA:rest}' }"
-      WARN-MATCHER: "%{WARN:warn} %{GREEDYDATA:rest}"
-      TEST-MATCHER: "%{TEST:test} %{GREEDYDATA:rest}"
-  - name: app-2
-    patterns:
+      INFO: info
       DEBUG: debug
     matchers:
-      # MATCHER: "match => { 'message' => '%{DEBUG:debug} %{GREEDYDATA:rest}' }"
-      MATCHER: "%{DEBUG:debug} %{GREEDYDATA:rest}"
-      
-  # pattern:
-  #   WARN: warn
-  #   DEBUG: debug
-  # spec:
-  # Add fields here
-  # size: 3
+    - "%{INFO:info} %{GREEDYDATA:rest}"
+    - "%{DEBUG:debug} %{GREEDYDATA:rest}"
+  - name: logging-sample-2
+    patterns:
+      WARN: warn
+      ERROR: error
+    matchers:
+    - "%{WARN:warn} %{GREEDYDATA:rest}"
+    - "%{ERROR:error} %{GREEDYDATA:rest}"

@@ -4,35 +4,23 @@ import (
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 )
 
-// EDIT THIS FILE!  THIS IS SCAFFOLDING FOR YOU TO OWN!
-// NOTE: json tags are required.  Any new fields you add must have json tags for the fields to be serialized.
-
-// Application defines desired state of Application patterns and matchers
+// Application defines desired state of application patterns and matchers
 type Application struct {
 	Name string `json:"name"`
 	Patterns map[string]string `json:"patterns"`
-	Matchers map[string]string `json:"matchers"`
+	Matchers []string `json:"matchers"`
 }
 
-// LogstashSpec defines the desired state of Logstash
+// LogstashSpec defines the desired state
 // +k8s:openapi-gen=true
 type LogstashSpec struct {
-	// INSERT ADDITIONAL SPEC FIELDS - desired state of cluster
-	// Important: Run "operator-sdk generate k8s" to regenerate code after modifying this file
-	// Add custom validation using kubebuilder tags: https://book-v1.book.kubebuilder.io/beyond_basics/generating_crd.html
-  
-	// Pattern string `json:"pattern"`
-	// Pattern map[string]string `json:"pattern"`
-
 	Applications []Application `json:"applications"`
 }
 
-// LogstashStatus defines the observed state of Logstash
+// LogstashStatus defines the observed state
 // +k8s:openapi-gen=true
 type LogstashStatus struct {
-	// INSERT ADDITIONAL STATUS FIELD - define observed state of cluster
-	// Important: Run "operator-sdk generate k8s" to regenerate code after modifying this file
-	// Add custom validation using kubebuilder tags: https://book-v1.book.kubebuilder.io/beyond_basics/generating_crd.html
+
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

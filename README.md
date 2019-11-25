@@ -4,7 +4,7 @@ This project creates an Operator using the [Operator Framework](https://github.c
 
 It assumes that a [Logstash Helm Chart](https://github.com/helm/charts/tree/master/stable/logstash) has already been deployed in your Cluster, as it indirectly manages resources that it creates.
 
-It's primary purpose is to provide a user-friendly interface for Logstash configuration, with an emphasis on its pattern-matching and filtering capabilities.
+Its primary purpose is to provide a user-friendly interface for modifying Logstash's configuration, with an emphasis on its pattern-matching and filtering capabilities.
 
 ## How to Deploy
 
@@ -45,6 +45,6 @@ spec:
   ...
 ```
 
-where `<application-name>` represents a unique name for an application deployed in your namespace and should be consistent with the name you assigned when you configured [logging](https://github.com/connexta/grayskull/blob/master/docs/kubernetes/features/logging.md), `<pattern-name>` is the name for a pattern you are creating that you can reference under `spec.matchers`, `<match-pattern>` is a grok pattern, and `<filter-pattern>` in the full pattern you want to match on in your log messages. There are [logstash patterns](https://github.com/elastic/logstash/blob/v1.4.2/patterns/grok-patterns) available by default which you should look at before attempting to create your own, as well as [filter-examples](https://www.elastic.co/guide/en/logstash/current/plugins-filters-grok.html) that you can use to be more familar with the Logstash filter syntax. The Kibana Dashboard also offers a `Grok Debugger` under `Dev Tools`, which allows you to declare your own patterns and experiment with filters so you can be confident your log messages are being indexed the way you expect.
+where `<application-name>` represents a unique name for an application deployed in your namespace and should be consistent with the name you assigned when you configured [logging](https://github.com/connexta/grayskull/blob/master/docs/kubernetes/features/logging.md), `<pattern-name>` is the name for a pattern you are creating that you can reference under `spec.applications[*].matchers`, `<match-pattern>` is a grok pattern, and `<filter-pattern>` is the full pattern you want to match on in your log messages. There are [logstash patterns](https://github.com/elastic/logstash/blob/v1.4.2/patterns/grok-patterns) available by default which you should look at before attempting to create your own, as well as [filter-examples](https://www.elastic.co/guide/en/logstash/current/plugins-filters-grok.html) that you can use to be more familar with the Logstash filter syntax. The Kibana Dashboard also offers a `Grok Debugger` under `Dev Tools`, which allows you to declare your own patterns and experiment with filters so you can be confident your log messages are being indexed the way you expect.
 
 
